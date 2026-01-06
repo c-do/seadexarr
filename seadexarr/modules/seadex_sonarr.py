@@ -702,8 +702,8 @@ class SeaDexSonarr(SeaDexArr):
 
         # Filter down here by various things
         final_ep_list = []
-        for ep in ep_list:
-
+        ep_list = [ep for ep in ep_list if ep.get("seasonNumber", 0) != 0]
+        
             if mapping_mode == "anime_ids":
                 include_episode = check_ep_by_anime_ids(
                     ep=ep,
